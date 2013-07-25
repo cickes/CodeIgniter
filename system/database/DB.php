@@ -112,7 +112,8 @@ function &DB($params = '', $active_record_override = NULL)
 	// we need to dynamically create a class that extends proper parent class
 	// based on whether we're using the active record class or not.
 	// Kudos to Paul for discovering this clever use of eval()
-
+if ( !isset($use_PDO) OR $use_PDO != TRUE)
+{
 	if ($active_record_override !== NULL)
 	{
 		$active_record = $active_record_override;
@@ -153,6 +154,19 @@ function &DB($params = '', $active_record_override = NULL)
 		$DB->query('SET SESSION sql_mode="STRICT_ALL_TABLES"');
 	}
 
+} else {
+
+	// using PDO
+	// connect to a database using PDO
+	try{
+		//to connect
+		$DB = new PDO($params['dbdriver'].':host='.$params['hostname'].'; dbname='.$params['database'], $params['username'], $params['password']);
+	}
+	catch(PDOException $e) {
+print_r($params);
+		echo 'Please contact Admin: '.$e->getMessage();
+	}
+}
 	return $DB;
 }
 

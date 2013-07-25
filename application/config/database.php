@@ -43,10 +43,16 @@
 |
 | The $active_record variables lets you determine whether or not to load
 | the active record class
+|
+| The $PDO_conn variable lets you determine whether or not to use a PDO connection
+| PDO and active record are mutually exclusive so choose one or the other.
+|
 */
 
 $active_group = 'default';
 $active_record = TRUE;
+// PDO and active record are mutually exclusive.  Choose one or the other.
+$PDO_conn = TRUE;
 
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = '';
@@ -55,7 +61,7 @@ $db['default']['database'] = '';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
-$db['default']['db_debug'] = TRUE;
+$db['default']['db_debug'] = FALSE;
 $db['default']['cache_on'] = FALSE;
 $db['default']['cachedir'] = '';
 $db['default']['char_set'] = 'utf8';
@@ -63,7 +69,6 @@ $db['default']['dbcollat'] = 'utf8_general_ci';
 $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
-
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
