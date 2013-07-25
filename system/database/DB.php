@@ -112,7 +112,7 @@ function &DB($params = '', $active_record_override = NULL)
 	// we need to dynamically create a class that extends proper parent class
 	// based on whether we're using the active record class or not.
 	// Kudos to Paul for discovering this clever use of eval()
-if ( !isset($use_PDO) OR $use_PDO != TRUE)
+if ( !isset($PDO_conn) OR $PDO_conn != TRUE)
 {
 	if ($active_record_override !== NULL)
 	{
