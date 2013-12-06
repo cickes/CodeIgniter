@@ -3,26 +3,30 @@ Based off of Codeigniter 2.1-stable version
 The files contained in the develop branch are based of Codeigniter 2.1-stable branch, in effect making this a 3rd party standalone.
 
 Files different from Ellis Labs Codeigniter
-  README.txt
-  PDOschema.sql
-  /application/config/config.php
-  /application/config/database.php
-  /application/libraries/Session.php
-  /system/database/DB.php
+*  README.txt
+*  PDOschema.sql
+*  /application/config/config.php
+*  /application/config/database.php
+*  /application/libraries/Session.php
+*  /system/database/DB.php
+
+Step By Step Installation
+-------------------------
 
 For a complete step by step installation tutorial, visit 
 http://christopherickes.com/web-app-development/pdo-for-codeigniter-2/ 
 
-Replace your current system/database/DB.php file
-Add application/libraries/Session.php file
-Add application/config/database.php file
-	Set the following values
+Brief Synopsis
+1. Replace your current system/database/DB.php file
+2. Add application/libraries/Session.php file
+3. Add application/config/database.php file
+	a. Set the following values
 		$active_record = FALSE;
 		$PDO_conn = TRUE;
-	Fill the remaining values based on your unique configuration.
+	b. Fill the remaining values based on your unique configuration.
 
-If storing sessions in the database (recommended)
-	Create a session table as instructed by Codeigniter
+4. If storing sessions in the database (recommended)
+	a. Create a session table as instructed by Codeigniter
 		CREATE TABLE IF NOT EXISTS  `ci_sessions` (
 			session_id varchar(40) DEFAULT '0' NOT NULL,
 			ip_address varchar(45) DEFAULT '0' NOT NULL,
@@ -32,7 +36,7 @@ If storing sessions in the database (recommended)
 			PRIMARY KEY (session_id),
 			KEY `last_activity_idx` (`last_activity`)
 		);
-	Add application/config/config.php
+	b. Add application/config/config.php
 		$config['sess_use_database']	= TRUE;				
 		$config['sess_table_name']		= 'ci_sessions';	
 		// or whatever you named your created table
