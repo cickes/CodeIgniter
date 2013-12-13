@@ -89,6 +89,7 @@ HINT for Apache:  Edit Virtual Host configuration.
     $application_path = '/full/path/to/app_dir/*new-app-dir*'  
    ```
 6.  Update *new-app-dir*/config/config.php  
+
     ```php
     $config['base_url']        = 'www.myappdomain.com';  
     # removing index.php requires rewrite rules   
@@ -99,6 +100,7 @@ HINT for Apache:  Edit Virtual Host configuration.
     ```
 7.  Update rewrite rules  
 ADVANCED: If possible, disable .htaccess and make updates in Virtual Host configurations  
+
     ```linux
     RewriteEngine On  
     RewriteBase /  
@@ -114,6 +116,7 @@ ADVANCED: If possible, disable .htaccess and make updates in Virtual Host config
     RewriteRule ^(.*)$ index.php?/$1 [L]  
     ```
 8.  Update *new-app-dir*/config/database.php  
+
     ```php
     $db['default']['hostname'] = 'localhost';  
     $db['default']['username'] = '';  
