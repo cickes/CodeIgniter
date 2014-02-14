@@ -123,4 +123,24 @@ ADVANCED: If possible, disable .htaccess and make updates in Virtual Host config
     $db['default']['password'] = '';  
     $db['default']['database'] = '';  
    ```
+   **Update:**
+   As of v2.2.0, database credentials are moved to an external file.
+   The external file allows credentials to be placed above the document root.
+   It also makes it easier to remove database credenitals from version control.
+   In all, it is more secure if executed correctly.
+   Example: 
+   In $_SERVER['DOCUMENT_ROOT'].'/config/database.php'
+   ```php
+   <?php
+   // Database connection config
+   return array(
+    'db_master' => array(
+        'username' => 'user_matrix_0120',
+        'hostname' => 'localhost',
+        'password' => 'hKZ4!9f3<?MU)6!',
+        'database' => 'matrix_app',
+    ),
+   );
+   ```
+   
 9.  Update *new-app-dir*/config/autoload.php appropriately.
