@@ -54,10 +54,17 @@ $active_record = TRUE;
 // PDO and active record are mutually exclusive.  Choose one or the other.
 $PDO_conn = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = '';
-$db['default']['password'] = '';
-$db['default']['database'] = '';
+// Config moved outside of project files and outside of git repo for version control security
+// Read the config and set up the database connection
+$credentials = require $_SERVER['DOCUMENT_ROOT'].'/config/database.php';
+// please note this config dir may not be accurate for your setup
+$dbconfig = $credentials['db_master'];
+
+
+$db['default']['hostname'] = $dbconfig['hostname'];
+$db['default']['username'] = $dbconfig['username'];
+$db['default']['password'] = $dbconfig['password'];
+$db['default']['database'] = $dbconfig['database'];
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
